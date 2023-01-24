@@ -1,24 +1,24 @@
 {
-  "name": "server",
+  "name": "task-tracker-server",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "server": "nodemon server.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "colors": "^1.4.0",
+    "axios": "^1.2.4",
+    "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^6.7.0"
-  },
-  "devDependencies": {
+    "mongoose": "^6.8.4",
+    "mongoose-auto-increment": "^5.0.1",
     "nodemon": "^2.0.20"
   }
 }
