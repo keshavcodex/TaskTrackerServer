@@ -16,8 +16,8 @@ app.use(cors());
 
 app.use("/", Routes);
 
-const mongourl = process.env.MONGO_URL;
-Connection(mongourl);
+Connection(process.env.MONGO_URL);
+
 app.listen(port || process.env.PORT, () =>
   console.log(`Server is running on PORT ${port}`)
 );

@@ -1,17 +1,14 @@
 import mongoose from "mongoose";
 
-import autoIncrement from "mongoose-auto-increment";
-
-const taskSchema = mongoose.Schema({
+const taskSchema = {
+  _id: Number,
   name: String,
   imgURL: String,
   progress: String,
   deadline: String,
-});
+};
 
-autoIncrement.initialize(mongoose.connection);
-taskSchema.plugin(autoIncrement.plugin, "task");
 
-const task = mongoose.model("task", taskSchema);
+const Task = mongoose.model("task", taskSchema);
 
-export default task;
+export default Task;

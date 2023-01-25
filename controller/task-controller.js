@@ -1,7 +1,10 @@
 import Task from "../schema/task-schema.js";
 
+var increment = 1000;
+
 export const addTask = async (req, res) => {
   const task = req.body;
+  task._id = increment++;
   const newTask = new Task(task);
 
   try {
