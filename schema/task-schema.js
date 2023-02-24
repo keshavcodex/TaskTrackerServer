@@ -6,6 +6,7 @@ const taskSchema = {
   imgURL: String,
   progress: String,
   deadline: String,
+  lastUpdate: Date
 };
 
 

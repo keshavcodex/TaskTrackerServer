@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Connection = async (mongourl) => {
   const URL = mongourl;
-  mongoose.set("strictQuery", false);
+  mongoose.set("strictQuery", true);
   try {
     await mongoose.connect(URL, {
       useNewUrlParser: true,

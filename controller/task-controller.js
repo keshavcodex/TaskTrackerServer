@@ -1,10 +1,20 @@
 import Task from "../schema/task-schema.js";
 
-var increment = 1000;
+function generateRandom() {
+  var second = new Date().toLocaleTimeString("en-UK", { second: "numeric" });
+  console.log(second);
+  let random = Math.random();
+  random = Math.floor(random * 100000);
+  if (second === 0) {
+    second = 61;
+  }
+  return random * second;
+}
 
 export const addTask = async (req, res) => {
   const task = req.body;
-  task._id = increment++;
+  task._id = generateRandom();
+  task.lastUpdate = new Date();
   const newTask = new Task(task);
 
   try {
@@ -17,7 +27,7 @@ export const addTask = async (req, res) => {
 
 export const getTasks = async (request, response) => {
   try {
-    const Tasks = await Task.find({});
+    const Tasks = await Task.find({}).sort({lastUpdate: -1});
     response.status(200).json(Tasks);
   } catch (error) {
     response.status(404).json({ message: error.message });
@@ -35,6 +45,7 @@ export const getTask = async (request, response) => {
 
 export const editTask = async (request, response) => {
   let task = request.body;
+  task.lastUpdate = new Date();
   const editTask = new Task(task);
 
   try {
